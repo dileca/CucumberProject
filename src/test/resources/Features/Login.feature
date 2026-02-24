@@ -8,5 +8,5 @@ Feature: User login test
     Then I should be redirected to the dashboard
 
     Examples:
-      | username          | password  |
-      | teacher@gmail.com | @12345678 |
+      | username        | password  |
+      | admin@gmail.com | @12345678 |

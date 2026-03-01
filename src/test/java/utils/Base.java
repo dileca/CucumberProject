@@ -3,6 +3,7 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.AdminPanelPage;
+import pageObjects.ApprovalsPage;
 import pageObjects.LoginPage;
 import pageObjects.RegistrationPage;
 
@@ -13,6 +14,7 @@ public class Base {
     public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
     public RegistrationPage registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
     public AdminPanelPage adminPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
+    public ApprovalsPage approvalsPage = PageFactory.initElements(driver, ApprovalsPage.class);
 }
 
 

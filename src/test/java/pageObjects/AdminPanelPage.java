@@ -9,11 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.Base;
+
 
 import java.time.Duration;
 
-public class AdminPanelPage extends Base {
+public class AdminPanelPage {
 
     WebDriver driver;
     String email;
@@ -30,17 +30,13 @@ public class AdminPanelPage extends Base {
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[3]/div/div[2]/table/tbody/tr/td[4]/select")
     WebElement userRoleDropdown_id;
 
+    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[2]/nav/button[3]")
+    WebElement approvalsOption_id;
+
 
     public AdminPanelPage(WebDriver driver) {
         this.driver = driver;
     }
-
-    //   public void loginAsAdmin() throws InterruptedException {
-//        driver = new ChromeDriver();
-//        driver.get("https://ndosisimplifiedautomation.vercel.app/");
-//        Thread.sleep(2000);
-//        loginPage.clickNavLoginButton();
-//        loginPage.enterEmail("
 
     public void navigateToAdminPanel() throws InterruptedException {
         adminDropdownButton_id.click();
@@ -90,7 +86,7 @@ public class AdminPanelPage extends Base {
         alert4.accept();
     }
 
-    public void verifyUserRoleChanged(String email) {
+    public void verifyUserRoleChanged(String email) throws InterruptedException {
         WebElement userRole = driver.findElement(By.xpath("//*[@id=\"app-root\"]/div/div[3]/div/div[2]/table/tbody/tr/td[4]/select"));
         String selectedRole = userRole.getAttribute("value");
         if (selectedRole.equals("Admin")) {
@@ -98,7 +94,15 @@ public class AdminPanelPage extends Base {
         } else {
             System.out.println("Failed to change user role for " + email + ". Current role: " + selectedRole);
         }
+
     }
 
+    public void navigateToApprovalsPage() throws InterruptedException {
+        approvalsOption_id.click();
+        Thread.sleep(2000);
+    }
 
 }
+
+
+

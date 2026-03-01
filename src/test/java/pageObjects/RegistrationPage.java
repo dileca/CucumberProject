@@ -1,10 +1,12 @@
 package pageObjects;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -16,8 +18,8 @@ public class RegistrationPage {
 
     WebDriver driver;
 
-  //  @FindBy(id = "signup-toggle")
-  //  WebElement signUpHereLink_id;
+    @FindBy(id = "signup-toggle")
+    WebElement signUpHereLink_id;
 
     @FindBy(xpath = "//div[@class='nav-user-section']")
     WebElement navLoginButtonXpath;
@@ -50,8 +52,8 @@ public class RegistrationPage {
     @FindBy(id = "register-submit")
     WebElement createAccountButton_id;
 
-    @FindBy(id = "login-toggle")
-    WebElement loginHereHyperlink_id;
+  //  @FindBy(id = "login-toggle")
+  //  WebElement loginHereHyperlink_id;
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -70,7 +72,7 @@ public class RegistrationPage {
     }
 
     public void clickSignUpHereLink() {
-        loginHereHyperlink_id.click();
+        signUpHereLink_id.click();
     }
 
     public void verifyRegistrationPageIsDisplayed() {
@@ -100,7 +102,7 @@ public class RegistrationPage {
     //}
 
     public void enterPassword(String password) {
-        passwordTextBox_id.clear();
+      //  passwordTextBox_id.clear();
         passwordTextBox_id.sendKeys(password);
     }
 
@@ -110,9 +112,24 @@ public class RegistrationPage {
     }
 
     public void selectGroupFromDropdown() {
-       groupDropdown_id.clear();
-       groupDropdown_id.sendKeys("Group T (2026)");
+     //  groupDropdown_id.clear();
+     //  groupDropdown_id.sendKeys("Group T (2026)");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until dropdown is clickable
+        WebElement dropdown = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id("register-group")));
+
+
+        Select select = new Select(dropdown);
+
+        select.selectByVisibleText("Group T (2026)");
     }
+
+
+
+
 
     public void clickCreateAccountButton() {
         createAccountButton_id.click();

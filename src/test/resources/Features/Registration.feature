@@ -13,5 +13,5 @@ Feature: Successful Registration
     Then I should see a success message confirming my registration
 
     Examples:
-      | firstName | lastName | email       | password  | confirmPassword |
-      | Test      | Account  | 2@gmail.com | @12345678 | @12345678       |
+      | firstName | lastName | email           | password  | confirmPassword |
+      | Test      | Account  | email@gmail.com | test@1234 | test@1234       |

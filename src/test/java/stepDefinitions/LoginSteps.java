@@ -34,5 +34,15 @@ public class LoginSteps extends Base {
         String expectedValue = "Welcome back, Diana! \uD83D\uDC4B";
         Assert.assertEquals(actualValue, expectedValue, "Expected message: " + expectedValue + ", but got: " + actualValue);
     }
+
+    @Then("I should be redirected to the dashboard for {}")
+    public void i_should_be_redirected_to_the_dashboard_for(String User) {
+
+        String actualValue = loginPage.getLoginSuccessMessage();
+        System.out.println("Actual login success message: " + actualValue);
+        String expectedValue = "Welcome back, " + User + "! 👋";
+        Assert.assertEquals(actualValue, expectedValue,
+                "Expected message: " + expectedValue + ", but got: " + actualValue);
+    }
 }
 
